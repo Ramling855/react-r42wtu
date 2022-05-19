@@ -1,6 +1,6 @@
 import React,{useEffect} from "react";
 import "./style.css";
-import{pay} from './seatSlice';
+import {put,add} from './seatSlice';
 import {useSelector,useDispatch}from 'react-redux'
 import Timerj from'./Timer';
 import{ Link} from 'react-router-dom'
@@ -10,13 +10,10 @@ import{ Link} from 'react-router-dom'
 export default function Show() {
   const dispatch=useDispatch();
 
-useEffect(()=>{
 
-
-})
 const Payment=(all)=>{
- dispatch(pay(all.seatNo))
-
+  // dispatch(put(all))
+dispatch(put(all.seatNo))
 }
 
 

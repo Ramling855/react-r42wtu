@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState,useEffect} from 'react';
 import * as React from 'react';
 
 import { styled } from '@mui/material/styles';
@@ -21,17 +21,21 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
 function FormRow() {
-  const colorchange=useSelector((state)=>state.sea.All)
-const [col,setCol]=useState([colorchange]);
-console.log(colorchange)
+  const co=useSelector((state)=>state.sea.seat)
+const [col,setCol]=useState([0]);
+
   const dispatch=useDispatch();
   
   const navigate=useNavigate()
 const detail=(data)=>{
-  
-dispatch(add(data))
-navigate('/show')
+  if(col===data.seatNo){}
+else{dispatch(add(data))
+navigate('/show')}
 } 
+useEffect(()=>{
+setCol(co)
+},[])
+
 const color=(ele)=>{
 
 // setCol('green')
@@ -40,19 +44,31 @@ const color=(ele)=>{
 
   return (
     <React.Fragment>
+      <h1 style={{backgroundColor:'red',color:'white'}}>Booked tickets color Red </h1>
+      <h1 style={{backgroundColor:'green',color:'white'}}>available tickets color green </h1>
      <Grid 
       onClick={()=>color()} item xs={4}
        >
-      {seatDetail.map((ele,i)=>{
-      const colors=col.includes(ele.seatNo)?'green':'red';
+      {
+     seatDetail.map((ele,i)=>{
+      var colors=col.includes(ele.seatNo)?'red':'green';
+if(colors=='red'){  return <div>
+      
+  <Item key={i} style={{backgroundColor:colors}}
+ >{ele.img}</Item>
 
-       return <div>
+
+</div>}else{  return <div>
       
-        <Item key={i} style={{backgroundColor:colors}}
-         onClick={()=>detail(ele)}>{ele.img}</Item>
+      <Item key={i} style={{backgroundColor:colors}}
+     onClick={()=>detail(ele)}>{ele.img}</Item>
+    
+    
+    </div>}
+     
+      })
       
-      
-      </div>})}
+      }
       </Grid>
     </React.Fragment>
   );

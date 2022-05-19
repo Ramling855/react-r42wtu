@@ -1,30 +1,23 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  data:[],
-  // seat: 0,
-  All:[],
-  
-}
+  data: [],
+  seat: [],
+  // all:[],
+};
 
 export const seatSlice = createSlice({
   name: 'seat',
   initialState,
   reducers: {
-    add:(state,action)=>{
- state.data.push(action.payload);
- 
+    add: (state, action) => {
+      state.data.push(action.payload);
     },
-    pay:(state,action)=>{
-      state.All.push(action.paylad)
-    }
-  },
-  color:()=>{
+      put: (state, action) => {
+    state.seat.push(action.payload)
+  },}
+});
 
-  }
-})
+export const { add, pay, put } = seatSlice.actions;
 
-
-export const {add,pay } = seatSlice.actions
-
-export default seatSlice.reducer
+export default seatSlice.reducer;
