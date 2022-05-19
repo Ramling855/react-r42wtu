@@ -21,7 +21,7 @@ const Payment=(all)=>{
 
 
   const seat=useSelector((state)=>state.sea.data)
-  console.log(seat)
+ 
 // console.log(datta.data)
   return (
     <div>
