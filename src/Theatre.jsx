@@ -1,6 +1,6 @@
 import {useState,useEffect} from 'react';
 import * as React from 'react';
-
+import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
@@ -8,6 +8,8 @@ import Grid from '@mui/material/Grid';
 import {useSelector,useDispatch}from 'react-redux'
 import{add} from './seatSlice'
 import seatDetail from './SeatDetail'
+import Seat2 from './Seat2'
+import Seat3 from './Seat3'
 import {useNavigate} from 'react-router-dom'
 import { pureFinalPropsSelectorFactory } from 'react-redux/es/connect/selectorFactory';
 
@@ -27,13 +29,22 @@ const [col,setCol]=useState([0]);
   const dispatch=useDispatch();
   
   const navigate=useNavigate()
+  const Go=()=>{
+    navigate('/show')
+  }
 const detail=(data)=>{
+
   if(col===data.seatNo){}
 else{dispatch(add(data))
-navigate('/show')}
+  setCol([data.seatNo])
+
+}
+
+
 } 
 useEffect(()=>{
 setCol(co)
+
 },[])
 
 const color=(ele)=>{
@@ -44,8 +55,11 @@ const color=(ele)=>{
 
   return (
     <React.Fragment>
-      <h1 style={{backgroundColor:'red',color:'white'}}>Booked tickets color Red </h1>
-      <h1 style={{backgroundColor:'green',color:'white'}}>available tickets color green </h1>
+      <h1><span style={{backgroundColor:'red',color:'white'}}>Booked tickets color Red </span>
+      <span style={{backgroundColor:'green',color:'white'}}>available tickets color green </span>
+      <Button variant="contained" onClick={Go}>Go to payment</Button>
+     </h1>
+    
      <Grid 
       onClick={()=>color()} item xs={4}
        >
@@ -70,6 +84,58 @@ if(colors=='red'){  return <div>
       
       }
       </Grid>
+
+  <Grid 
+      onClick={()=>color()} item xs={4}
+       >
+      {
+     Seat2.map((ele,i)=>{
+      var colors=col.includes(ele.seatNo)?'red':'green';
+if(colors=='red'){  return <div>
+      
+  <Item key={i} style={{backgroundColor:colors}}
+ >{ele.img}</Item>
+
+
+</div>}else{  return <div>
+      
+      <Item key={i} style={{backgroundColor:colors}}
+     onClick={()=>detail(ele)}>{ele.img}</Item>
+    
+    
+    </div>}
+     
+      })
+      
+      }
+      </Grid>
+
+      <Grid 
+      onClick={()=>color()} item xs={4}
+       >
+      {
+     Seat3.map((ele,i)=>{
+      var colors=col.includes(ele.seatNo)?'red':'green';
+if(colors=='red'){  return <div>
+      
+  <Item key={i} style={{backgroundColor:colors}}
+ >{ele.img}</Item>
+
+
+</div>}else{  return <div>
+      
+      <Item key={i} style={{backgroundColor:colors}}
+     onClick={()=>detail(ele)}>{ele.img}</Item>
+    
+    
+    </div>}
+     
+      })
+      
+      }
+      </Grid>
+
+
     </React.Fragment>
   );
 }
@@ -77,11 +143,11 @@ if(colors=='red'){  return <div>
 export default function NestedGrid() {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={3}>
-        <Grid container item spacing={3}>
+      <Grid container spacing={2}>
+        <Grid container item spacing={2}>
           <FormRow />
         </Grid>
-       
+        
       </Grid>
     </Box>
   );

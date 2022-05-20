@@ -8,7 +8,7 @@ import{ Link} from 'react-router-dom'
 
 
 export default function Show() {
-  const[match,setMatch]=useState()
+  const[match,setMatch]=useState(0)
   const dispatch=useDispatch();
   const seat=useSelector((state)=>state.sea.data)
   const[out,setOut]=useState([])
@@ -18,6 +18,9 @@ dispatch(put(all.seatNo))
 setMatch(all.seatNo);
 // if(match!==all.seatNo){out.push(seat)}
 }
+console.log(match,'ma')
+console.log(seat,'tt')
+
 
 useEffect(()=>{
   
