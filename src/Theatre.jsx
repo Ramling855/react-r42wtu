@@ -6,7 +6,7 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import {useSelector,useDispatch}from 'react-redux'
-import{add} from './seatSlice'
+import{add,remv} from './seatSlice'
 import seatDetail from './SeatDetail'
 import Seat2 from './Seat2'
 import Seat3 from './Seat3'
@@ -24,7 +24,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 function FormRow() {
   const co=useSelector((state)=>state.sea.seat)
-const [col,setCol]=useState([0]);
+const [col,setCol]=useState([]);
 
   const dispatch=useDispatch();
   
@@ -36,10 +36,15 @@ const detail=(data)=>{
 
   if(col===data.seatNo){}
 else{dispatch(add(data))
-  setCol([data.seatNo])
+  setCol([...col,data.seatNo])
 
 }
 
+
+
+} 
+const detail1=(data)=>{
+  dispatch(remv(data))
 
 } 
 useEffect(()=>{
@@ -69,6 +74,7 @@ const color=(ele)=>{
 if(colors=='red'){  return <div>
       
   <Item key={i} style={{backgroundColor:colors}}
+  onClick={()=>detail1(ele)}
  >{ele.img}</Item>
 
 
@@ -94,6 +100,7 @@ if(colors=='red'){  return <div>
 if(colors=='red'){  return <div>
       
   <Item key={i} style={{backgroundColor:colors}}
+    onClick={()=>detail1(ele)}
  >{ele.img}</Item>
 
 
@@ -119,6 +126,7 @@ if(colors=='red'){  return <div>
 if(colors=='red'){  return <div>
       
   <Item key={i} style={{backgroundColor:colors}}
+    onClick={()=>detail1(ele)}
  >{ele.img}</Item>
 
 
