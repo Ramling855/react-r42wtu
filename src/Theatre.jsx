@@ -29,9 +29,7 @@ const [col,setCol]=useState([]);
   const dispatch=useDispatch();
   
   const navigate=useNavigate()
-  const Go=()=>{
-    navigate('/show')
-  }
+  
 const detail=(data)=>{
 
   if(col===data.seatNo){}
@@ -60,10 +58,7 @@ const color=(ele)=>{
 
   return (
     <React.Fragment>
-      <h1><span style={{backgroundColor:'red',color:'white'}}>Booked tickets color Red </span>
-      <span style={{backgroundColor:'green',color:'white'}}>available tickets color green </span>
-      <Button variant="contained" onClick={Go}>Go to payment</Button>
-     </h1>
+      
     
      <Grid 
       onClick={()=>color()} item xs={4}
@@ -149,13 +144,20 @@ if(colors=='red'){  return <div>
 }
 
 export default function NestedGrid() {
+  const Go=()=>{
+    navigate('/show')
+  }
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={2}>
-        <Grid container item spacing={2}>
-          <FormRow />
+      <Grid container spacing={1}>
+        <Grid container item spacing={1}>
+       
+          <h1><span style={{backgroundColor:'red',color:'white'}}>Booked tickets color Red </span>
+      <span style={{backgroundColor:'green',color:'white'}}>available tickets color green </span>
+      <Button variant="contained" onClick={Go}>Go to payment</Button>
+     </h1>
         </Grid>
-        
+        <FormRow />
       </Grid>
     </Box>
   );
