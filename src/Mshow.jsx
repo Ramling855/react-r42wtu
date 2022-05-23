@@ -19,13 +19,13 @@ const Item = styled(Paper)(({ theme }) => ({
 export default function ResponsiveGrid() {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+      <Grid container spacing={{ xs: 1, md:1  }} columns={{ xs: 2, sm: 2, md: 2 }}>
         {Array.from(Array(1)).map((_, index) => (
-          <Grid item xs={2} sm={4} md={4} key={index}>
+          <Grid item xs={5} sm={5} md={5} key={index}>
             {Movie.map((dd)=>{
- return <Item>
+ return <Item style={{width:'30%',display:'inline-block' }}>
    <h1 style={{color:'brown'}}>{dd.name}</h1>
- <img src={dd.img} alt=""/>
+ <img style={{width:'50%'}} src={dd.img} alt=""/>
  {/* <Link to='/Theatre'><h3>Book your seat</h3> */}
 {/* <Button variant="contained" >click here</Button> */}
 {/* </Link> */}
