@@ -10,7 +10,7 @@ const NormalLoginForm = () => {
   let navigate = useNavigate();
   const onFinish = (values) => {
     console.log('Received values of form: ', values);
-    navigate('/Theatre')
+    navigate('/Mshow')
   };
 
   return (

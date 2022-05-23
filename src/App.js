@@ -3,6 +3,7 @@ import "./style.css";
 import Theatre from './Theatre'
 import Login from './Login'
 import Show from './Show'
+import Mshow from './Mshow'
 import Success from './Success'
 import {
   BrowserRouter ,
@@ -14,12 +15,15 @@ import {
 export default function App() {
   return (
     
-    <div><BrowserRouter>
+    <div>
+      
+      <BrowserRouter>
       <Routes>
 <Route path='/' element={<Login/>}/>
 <Route path='/show' element={<Show/>}/>
 <Route path='/Theatre' element={<Theatre/>}/>
 <Route path='/Success' element={<Success/>}/>
+<Route path='/Mshow' element={<Mshow/>}/>
       </Routes>
       
       </BrowserRouter>
