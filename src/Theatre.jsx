@@ -28,7 +28,7 @@ const [col,setCol]=useState([]);
 
   const dispatch=useDispatch();
   
-  const navigate=useNavigate()
+  
   
 const detail=(data)=>{
 
@@ -144,6 +144,7 @@ if(colors=='red'){  return <div>
 }
 
 export default function NestedGrid() {
+  const navigate=useNavigate()
   const Go=()=>{
     navigate('/show')
   }
